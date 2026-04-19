@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AJC Contracting — Instagram Posts EN / AR</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&family=Noto+Sans+Arabic:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#1A3A8C;--navy-dark:#122970;--white:#FFFFFF;}
+  body{background:#0f0f0f;font-family:'Barlow',sans-serif;padding:2rem;}
+
+  /* ── CONTROLS ── */
+  .controls{display:flex;justify-content:center;align-items:center;gap:1rem;margin-bottom:2.5rem;}
+  .controls h1{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.35);}
+  .lang-toggle{display:flex;gap:3px;background:rgba(255,255,255,0.08);padding:3px;border-radius:4px;}
+  .lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.45);
+    font-size:0.75rem;font-weight:700;letter-spacing:0.12em;padding:6px 18px;
+    cursor:pointer;border-radius:3px;font-family:'Barlow Condensed',sans-serif;
+    text-transform:uppercase;transition:all 0.2s;}
+  .lang-btn.active{background:var(--navy);color:#fff;}
+
+  /* ── GRID ── */
+  .grid{display:grid;grid-template-columns:repeat(3,500px);gap:2rem;justify-content:center;}
+
+  /* ── BASE POST ── */
+  .post{width:500px;height:500px;position:relative;overflow:hidden;cursor:pointer;
+    transition:transform 0.3s;}
+  .post:hover{transform:scale(1.015);}
+
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .ov-navy{position:absolute;inset:0;background:linear-gradient(135deg,rgba(18,41,112,0.93) 0%,rgba(18,41,112,0.55) 60%,transparent 100%);}
+  .ov-bottom{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,35,0.96) 0%,rgba(10,15,35,0.55) 50%,transparent 85%);}
+  .ov-dark{position:absolute;inset:0;background:rgba(10,15,35,0.72);}
+  .accent-l{position:absolute;left:0;top:0;bottom:0;width:5px;background:#fff;}
+  .accent-r{position:absolute;right:0;top:0;bottom:0;width:5px;background:#fff;}
+  .accent-top{position:absolute;left:0;right:0;top:0;height:4px;background:#fff;}
+  .accent-bot{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--navy);}
+
+  .logo-badge{position:absolute;top:20px;right:20px;background:var(--navy);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:900;
+    letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:2px;}
+  .logo-badge-ar{position:absolute;top:20px;left:20px;}
+
+  .htag{position:absolute;bottom:18px;right:20px;font-family:'Barlow Condensed',sans-serif;
+    font-size:0.58rem;letter-spacing:0.1em;color:rgba(255,255,255,0.3);text-transform:uppercase;}
+  .htag-ar{right:auto;left:20px;font-family:'Noto Sans Arabic',sans-serif;
+    letter-spacing:0;font-size:0.65rem;}
+
+  /* Arabic font helpers */
+  body.ar .ar-font{font-family:'Noto Sans Arabic',sans-serif !important;}
+
+  /* ══════════════════════════════════════════
+     POST 1 — Brand Intro
+  ══════════════════════════════════════════ */
+  #p1 .bg{background-image:url('https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&q=80');}
+  #p1 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:42px 48px;}
+  #p1 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;
+    letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px;}
+  #p1 .title{font-family:'Barlow Condensed',sans-serif;font-size:3.9rem;font-weight:900;
+    line-height:0.93;color:#fff;text-transform:uppercase;margin-bottom:16px;}
+  #p1 .title .accent{color:#7BAEF0;}
+  #p1 .tagline{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.65;max-width:280px;}
+  #p1 .pill{display:inline-block;margin-top:20px;background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.75);
+    font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.18em;
+    text-transform:uppercase;padding:5px 14px;border-radius:2px;}
+
+  /* ══════════════════════════════════════════
+     POST 2 — Why Choose Us
+  ══════════════════════════════════════════ */
+  #p2{background:var(--navy-dark);}
+  #p2 .bg{background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80');opacity:0.1;}
+  #p2 .content{position:absolute;inset:0;padding:36px 40px;display:flex;flex-direction:column;justify-content:center;}
+  #p2 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;
+    letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px;}
+  #p2 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.3rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1;margin-bottom:24px;}
+  #p2 .title .accent{color:#7BAEF0;}
+  #p2 .pillars{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  #p2 .pillar{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
+    padding:15px 16px;border-left:3px solid #fff;}
+  body.ar #p2 .pillar{border-left:none;border-right:3px solid #fff;}
+  #p2 .p-icon{font-size:1.15rem;margin-bottom:5px;display:block;}
+  #p2 .p-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;
+    text-transform:uppercase;color:#fff;letter-spacing:0.04em;display:block;margin-bottom:3px;}
+  body.ar #p2 .p-title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+  #p2 .p-desc{font-size:0.7rem;color:rgba(255,255,255,0.45);line-height:1.5;}
+  body.ar #p2 .p-desc{font-family:'Noto Sans Arabic',sans-serif;}
+
+  /* ══════════════════════════════════════════
+     POST 3 — General Contracting
+  ══════════════════════════════════════════ */
+  #p3 .bg{background-image:url('https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&q=80');}
+  #p3 .content{position:absolute;bottom:0;left:0;right:0;padding:32px 40px 28px;}
+  #p3 .svc-tag{display:inline-block;background:var(--navy);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.2em;
+    text-transform:uppercase;font-weight:700;padding:4px 10px;margin-bottom:10px;border-radius:1px;}
+  #p3 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.9rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1;margin-bottom:9px;}
+  body.ar #p3 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:2.4rem;}
+  #p3 .desc{font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.65;max-width:340px;}
+  body.ar #p3 .desc{font-family:'Noto Sans Arabic',sans-serif;}
+  #p3 .cta{display:inline-block;margin-top:12px;font-family:'Barlow Condensed',sans-serif;
+    font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+    color:rgba(255,255,255,0.45);border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:1px;}
+
+  /* ══════════════════════════════════════════
+     POST 4 — Solar
+  ══════════════════════════════════════════ */
+  #p4 .bg{background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80');}
+  #p4 .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:36px 40px;}
+  #p4 .big{font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:900;color:#fff;
+    line-height:1;letter-spacing:-0.02em;}
+  #p4 .big .sub-accent{font-size:2rem;color:#7BAEF0;}
+  body.ar #p4 .big{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;font-size:3.5rem;}
+  #p4 .title{font-family:'Barlow Condensed',sans-serif;font-size:1.55rem;font-weight:900;
+    text-transform:uppercase;color:#fff;margin:4px 0 10px;line-height:1.1;}
+  body.ar #p4 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+  #p4 .desc{font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.65;max-width:330px;}
+  body.ar #p4 .desc{font-family:'Noto Sans Arabic',sans-serif;}
+
+  /* ══════════════════════════════════════════
+     POST 5 — Electrical
+  ══════════════════════════════════════════ */
+  #p5{background:#070c1a;}
+  #p5 .bg{background-image:url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80');opacity:0.32;}
+  #p5 .content{position:absolute;inset:0;padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;}
+  #p5 .top{display:flex;justify-content:space-between;align-items:flex-start;}
+  #p5 .svc-num{font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:900;
+    color:rgba(255,255,255,0.05);line-height:1;}
+  #p5 .svc-label{background:#fff;color:var(--navy);font-family:'Barlow Condensed',sans-serif;
+    font-size:0.62rem;font-weight:900;letter-spacing:0.18em;text-transform:uppercase;
+    padding:5px 12px;border-radius:2px;align-self:flex-start;}
+  body.ar #p5 .svc-label{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+  #p5 .title{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1;margin-bottom:10px;}
+  body.ar #p5 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:2.5rem;}
+  #p5 .divider{height:2px;background:rgba(255,255,255,0.12);width:50px;margin:12px 0;}
+  #p5 .desc{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.65;max-width:340px;}
+  body.ar #p5 .desc{font-family:'Noto Sans Arabic',sans-serif;}
+
+  /* ══════════════════════════════════════════
+     POST 6 — Villa / Residential
+  ══════════════════════════════════════════ */
+  #p6 .bg{background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80');}
+  #p6 .content{position:absolute;inset:0;display:flex;}
+  #p6 .panel{width:215px;flex-shrink:0;background:rgba(18,41,112,0.95);padding:34px 26px;
+    display:flex;flex-direction:column;justify-content:center;}
+  body.ar #p6 .content{flex-direction:row-reverse;}
+  #p6 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.22em;
+    text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:10px;}
+  body.ar #p6 .eyebrow{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:0.7rem;}
+  #p6 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1.05;margin-bottom:12px;}
+  body.ar #p6 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:1.7rem;}
+  #p6 .desc{font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.65;}
+  body.ar #p6 .desc{font-family:'Noto Sans Arabic',sans-serif;}
+  #p6 .cta-pill{display:inline-block;margin-top:16px;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);
+    font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.14em;
+    text-transform:uppercase;padding:5px 10px;border-radius:1px;}
+  body.ar #p6 .cta-pill{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+
+  /* ══════════════════════════════════════════
+     POST 7 — Renovation
+  ══════════════════════════════════════════ */
+  #p7 .bg{background-image:url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80');}
+  #p7 .content{position:absolute;inset:0;padding:30px 38px;display:flex;flex-direction:column;justify-content:space-between;}
+  #p7 .top{display:flex;justify-content:space-between;align-items:flex-start;}
+  #p7 .badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.18em;
+    text-transform:uppercase;padding:5px 11px;border-radius:1px;}
+  body.ar #p7 .badge{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+  #p7 .qmark{font-size:5rem;color:rgba(255,255,255,0.06);line-height:0.6;}
+  #p7 .quote{font-size:1rem;color:rgba(255,255,255,0.78);line-height:1.7;
+    font-style:italic;font-weight:300;margin-bottom:12px;max-width:360px;}
+  body.ar #p7 .quote{font-family:'Noto Sans Arabic',sans-serif;font-style:normal;}
+  #p7 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1;}
+  body.ar #p7 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:2rem;}
+
+  /* ══════════════════════════════════════════
+     POST 8 — Structural Works
+  ══════════════════════════════════════════ */
+  #p8{background:var(--navy-dark);}
+  #p8 .bg{background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80');opacity:0.18;}
+  #p8 .watermark{position:absolute;top:60px;left:25px;right:25px;
+    font-family:'Barlow Condensed',sans-serif;font-size:5.5rem;font-weight:900;
+    text-transform:uppercase;color:rgba(255,255,255,0.04);line-height:1;letter-spacing:-0.02em;}
+  #p8 .content{position:absolute;inset:0;padding:36px 40px;display:flex;flex-direction:column;}
+  #p8 .top-label{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;letter-spacing:0.22em;
+    text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:auto;}
+  body.ar #p8 .top-label{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+  #p8 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.7rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1.05;margin-bottom:10px;}
+  body.ar #p8 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:2.2rem;}
+  #p8 .desc{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.65;max-width:360px;}
+  body.ar #p8 .desc{font-family:'Noto Sans Arabic',sans-serif;}
+  #p8 .stats{display:flex;gap:22px;margin-top:18px;}
+  #p8 .stat{border-left:2px solid rgba(255,255,255,0.18);padding-left:12px;}
+  body.ar #p8 .stat{border-left:none;border-right:2px solid rgba(255,255,255,0.18);padding-left:0;padding-right:12px;}
+  #p8 .s-num{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;color:#fff;line-height:1;}
+  #p8 .s-lbl{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.12em;
+    text-transform:uppercase;color:rgba(255,255,255,0.3);}
+  body.ar #p8 .s-lbl{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;}
+
+  /* ══════════════════════════════════════════
+     POST 9 — CTA / Contact
+  ══════════════════════════════════════════ */
+  #p9{background:var(--navy);}
+  #p9 .deco{position:absolute;top:0;right:0;width:200px;height:100%;
+    background:rgba(255,255,255,0.035);clip-path:polygon(50px 0,100% 0,100% 100%,0 100%);}
+  body.ar #p9 .deco{right:auto;left:0;clip-path:polygon(0 0,100% 0,calc(100% - 50px) 100%,0 100%);}
+  #p9 .content{position:absolute;inset:0;padding:38px 42px;display:flex;flex-direction:column;justify-content:space-between;}
+  #p9 .brand{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;
+    text-transform:uppercase;color:#fff;letter-spacing:0.08em;}
+  #p9 .brand span{color:rgba(255,255,255,0.35);}
+  #p9 .title{font-family:'Barlow Condensed',sans-serif;font-size:3.2rem;font-weight:900;
+    text-transform:uppercase;color:#fff;line-height:1;margin-bottom:10px;}
+  body.ar #p9 .title{font-family:'Noto Sans Arabic',sans-serif;letter-spacing:0;text-transform:none;font-size:2.5rem;}
+  #p9 .sub{font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.65;max-width:310px;}
+  body.ar #p9 .sub{font-family:'Noto Sans Arabic',sans-serif;}
+  #p9 .contacts{display:flex;flex-direction:column;gap:10px;}
+  #p9 .c-line{display:flex;align-items:center;gap:10px;}
+  body.ar #p9 .c-line{flex-direction:row-reverse;}
+  #p9 .c-ico{width:32px;height:32px;background:rgba(255,255,255,0.1);
+    display:flex;align-items:center;justify-content:center;font-size:0.85rem;
+    border-radius:2px;flex-shrink:0;}
+  #p9 .c-txt{font-size:0.8rem;color:rgba(255,255,255,0.7);}
+  body.ar #p9 .c-txt{font-family:'Noto Sans Arabic',sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <h1>AJC Contracting — Instagram Posts</h1>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('ar')">🇱🇧 AR</button>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- ── POST 1 — Brand Intro ── -->
+  <div class="post" id="p1">
+    <div class="bg"></div>
+    <div class="ov-navy"></div>
+    <div class="accent-l"></div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="eyebrow" data-en="General Contracting · Lebanon" data-ar="مقاولات عامة · لبنان">General Contracting · Lebanon</div>
+      <div class="title" data-en="Building<br/><span class='accent'>Lebanon</span><br/>Better." data-ar="نبني<br/><span class='accent'>لبنان</span><br/>معاً.">Building<br/><span class="accent">Lebanon</span><br/>Better.</div>
+      <p class="tagline" data-en="Professional contracting services across all Lebanese governorates — from Metn to the mountains." data-ar="خدمات مقاولات احترافية في جميع المحافظات اللبنانية — من المتن إلى الجبال.">Professional contracting services across all Lebanese governorates — from Metn to the mountains.</p>
+      <div class="pill" data-en="Metn, Lebanon · Est. 2009" data-ar="المتن، لبنان · منذ 2009">Metn, Lebanon · Est. 2009</div>
+    </div>
+    <div class="htag" data-en="#AJCContracting #Lebanon #Construction" data-ar="#AJCContracting #لبنان #مقاولات">#AJCContracting #Lebanon #Construction</div>
+  </div>
+
+  <!-- ── POST 2 — Why Choose Us ── -->
+  <div class="post" id="p2">
+    <div class="bg"></div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="eyebrow" data-en="Why Choose Us" data-ar="لماذا تختارنا">Why Choose Us</div>
+      <div class="title" data-en="Our 4 <span class='accent'>Pillars</span>" data-ar="ركائزنا الـ<span class='accent'>4</span>">Our 4 <span class="accent">Pillars</span></div>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="p-icon">⚙️</span>
+          <span class="p-title" data-en="Execution" data-ar="التنفيذ">Execution</span>
+          <span class="p-desc" data-en="On time, on budget. Every time." data-ar="في الوقت والميزانية. دائماً.">On time, on budget. Every time.</span>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">🤝</span>
+          <span class="p-title" data-en="Ethics" data-ar="الأخلاقيات">Ethics</span>
+          <span class="p-desc" data-en="Fair contracts. Honest communication." data-ar="عقود عادلة. تواصل صادق.">Fair contracts. Honest communication.</span>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">📋</span>
+          <span class="p-title" data-en="Transparency" data-ar="الشفافية">Transparency</span>
+          <span class="p-desc" data-en="Clear pricing. No surprises." data-ar="تسعير واضح. بلا مفاجآت.">Clear pricing. No surprises.</span>
+        </div>
+        <div class="pillar">
+          <span class="p-icon">🏗️</span>
+          <span class="p-title" data-en="Expertise" data-ar="الخبرة">Expertise</span>
+          <span class="p-desc" data-en="OEA engineers. Decades of experience." data-ar="مهندسون معتمدون. عقود من الخبرة.">OEA engineers. Decades of experience.</span>
+        </div>
+      </div>
+    </div>
+    <div class="htag" data-en="#AJCContracting #WhyAJC #Lebanon" data-ar="#AJCContracting #لماذا_AJC #لبنان">#AJCContracting #WhyAJC #Lebanon</div>
+  </div>
+
+  <!-- ── POST 3 — General Contracting ── -->
+  <div class="post" id="p3">
+    <div class="bg"></div>
+    <div class="ov-bottom"></div>
+    <div class="accent-l"></div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="svc-tag" data-en="Service 01" data-ar="خدمة 01">Service 01</div>
+      <div class="title" data-en="General<br/>Contracting" data-ar="مقاولات<br/>عامة">General<br/>Contracting</div>
+      <p class="desc" data-en="From first shovel to final handover — we manage every phase across all Lebanese governorates." data-ar="من الشوبل الأول حتى التسليم النهائي — ندير كل مرحلة في جميع أنحاء لبنان.">From first shovel to final handover — we manage every phase across all Lebanese governorates.</p>
+      <span class="cta" data-en="Ajccontracting@gmail.com →" data-ar="Ajccontracting@gmail.com ←">Ajccontracting@gmail.com →</span>
+    </div>
+    <div class="htag" data-en="#GeneralContractor #Lebanon #Metn" data-ar="#مقاولات_عامة #لبنان #المتن">#GeneralContractor #Lebanon #Metn</div>
+  </div>
+
+  <!-- ── POST 4 — Solar ── -->
+  <div class="post" id="p4">
+    <div class="bg"></div>
+    <div class="ov-bottom"></div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="big" data-en="⚡ <span class='sub-accent'>Solar</span>" data-ar="⚡ <span class='sub-accent'>طاقة شمسية</span>">⚡ <span class="sub-accent">Solar</span></div>
+      <div class="title" data-en="Power Your Home<br/>Without EDL" data-ar="أضِئ منزلك<br/>بدون مؤسسة الكهرباء">Power Your Home<br/>Without EDL</div>
+      <p class="desc" data-en="AJC designs, supplies and installs complete solar systems for Lebanese homes and businesses. Cut your bill. Keep the lights on." data-ar="AJC تصمم وتوفر وتركب أنظمة شمسية كاملة للمنازل والشركات اللبنانية. خفّض فاتورتك. حافظ على النور.">AJC designs, supplies and installs complete solar systems for Lebanese homes and businesses. Cut your bill. Keep the lights on.</p>
+    </div>
+    <div class="htag" data-en="#SolarLebanon #طاقةشمسية #RenewableEnergy" data-ar="#طاقة_شمسية #لبنان #كهرباء_لبنان">#SolarLebanon #طاقةشمسية #RenewableEnergy</div>
+  </div>
+
+  <!-- ── POST 5 — Electrical ── -->
+  <div class="post" id="p5">
+    <div class="bg"></div>
+    <div class="accent-top"></div>
+    <div class="content">
+      <div class="top">
+        <span class="svc-num">08</span>
+        <span class="svc-label" data-en="Electrical Works" data-ar="الأعمال الكهربائية">Electrical Works</span>
+      </div>
+      <div>
+        <div class="title" data-en="Certified<br/>Electrical<br/>Contractor" data-ar="مقاول كهربائي<br/>معتمد<br/>في لبنان">Certified<br/>Electrical<br/>Contractor</div>
+        <div class="divider"></div>
+        <p class="desc" data-en="Installations, panel upgrades, wiring, lighting and generator connections across Lebanon." data-ar="تمديدات، تحديث لوحات، أسلاك، إضاءة وتوصيلات مولدات في جميع أنحاء لبنان.">Installations, panel upgrades, wiring, lighting and generator connections across Lebanon.</p>
+      </div>
+    </div>
+    <div class="logo-badge" style="bottom:20px;top:auto;" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="htag" data-en="#Electrician #Lebanon #AJCContracting" data-ar="#كهربائي #لبنان #AJCContracting">#Electrician #Lebanon #AJCContracting</div>
+  </div>
+
+  <!-- ── POST 6 — Villa ── -->
+  <div class="post" id="p6">
+    <div class="bg"></div>
+    <div class="content">
+      <div class="panel">
+        <div class="eyebrow" data-en="Residential" data-ar="سكني">Residential</div>
+        <div class="title" data-en="Dream<br/>Villas<br/>Built." data-ar="فلل<br/>أحلامك<br/>تُبنى.">Dream<br/>Villas<br/>Built.</div>
+        <p class="desc" data-en="Mountain retreats, Beirut apartments, coastal residences — designed and built to last." data-ar="منتجعات جبلية، شقق بيروت، إقامات ساحلية — مصممة ومبنية لتدوم.">Mountain retreats, Beirut apartments, coastal residences — designed and built to last.</p>
+        <span class="cta-pill" data-en="Get a Free Quote →" data-ar="احصل على عرض مجاني ←">Get a Free Quote →</span>
+      </div>
+    </div>
+    <div class="accent-bot"></div>
+    <div class="htag" data-en="#LebaneseVilla #Metn #Construction" data-ar="#فلل_لبنانية #المتن #بناء">#LebaneseVilla #Metn #Construction</div>
+  </div>
+
+  <!-- ── POST 7 — Renovation ── -->
+  <div class="post" id="p7">
+    <div class="bg"></div>
+    <div class="ov-dark"></div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="top">
+        <span class="badge" data-en="Renovation & Restoration" data-ar="تجديد وترميم">Renovation & Restoration</span>
+        <span class="qmark">"</span>
+      </div>
+      <div>
+        <p class="quote" data-en="Old stones deserve new life. We restore Lebanon's architectural heritage with the same care it was built with." data-ar="الحجارة القديمة تستحق حياةً جديدة. نُرمِّم التراث المعماري اللبناني بنفس العناية التي بُني بها.">"Old stones deserve new life. We restore Lebanon's architectural heritage with the same care it was built with."</p>
+        <div class="title" data-en="Heritage<br/>Restored." data-ar="التراث<br/>يعود للحياة.">Heritage<br/>Restored.</div>
+      </div>
+    </div>
+    <div class="htag" data-en="#Renovation #Lebanon #Heritage" data-ar="#ترميم #لبنان #تراث">#Renovation #Lebanon #Heritage</div>
+  </div>
+
+  <!-- ── POST 8 — Structural ── -->
+  <div class="post" id="p8">
+    <div class="bg"></div>
+    <div class="watermark" data-en="STRUCTURE" data-ar="إنشاء">STRUCTURE</div>
+    <div class="logo-badge" data-en="AJC" data-ar="AJC">AJC</div>
+    <div class="content">
+      <div class="top-label" data-en="Structural Works · Lebanon" data-ar="الأعمال الإنشائية · لبنان">Structural Works · Lebanon</div>
+      <div>
+        <div class="title" data-en="Built to<br/>Withstand<br/>Everything." data-ar="مبنية<br/>لتصمد<br/>أمام كل شيء.">Built to<br/>Withstand<br/>Everything.</div>
+        <p class="desc" data-en="Seismic-compliant reinforced concrete and steel structures that exceed Lebanese code standards." data-ar="هياكل خرسانية مسلحة وفولاذية مقاومة للزلازل تتجاوز معايير الكود اللبناني.">Seismic-compliant reinforced concrete and steel structures that exceed Lebanese code standards.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="s-num">15+</div>
+            <div class="s-lbl" data-en="Years" data-ar="سنة">Years</div>
+          </div>
+          <div class="stat">
+            <div class="s-num">200+</div>
+            <div class="s-lbl" data-en="Projects" data-ar="مشروع">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="s-num">6</div>
+            <div class="s-lbl" data-en="Governorates" data-ar="محافظات">Governorates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="htag" data-en="#StructuralWorks #Construction #Lebanon" data-ar="#أعمال_إنشائية #بناء #لبنان">#StructuralWorks #Construction #Lebanon</div>
+  </div>
+
+  <!-- ── POST 9 — CTA Contact ── -->
+  <div class="post" id="p9">
+    <div class="deco"></div>
+    <div class="accent-l"></div>
+    <div class="content">
+      <div class="brand">AJC <span>Contracting</span></div>
+      <div>
+        <div class="title" data-en="Let's Build<br/>Together." data-ar="لنبنِ<br/>معاً.">Let's Build<br/>Together.</div>
+        <p class="sub" data-en="Free consultation and quote anywhere in Lebanon. We speak English, Arabic and French." data-ar="استشارة وعرض سعر مجاني في أي مكان بلبنان. نتكلم العربية والإنجليزية والفرنسية.">Free consultation and quote anywhere in Lebanon. We speak English, Arabic and French.</p>
+      </div>
+      <div class="contacts">
+        <div class="c-line"><div class="c-ico">✉️</div><div class="c-txt">Ajccontracting@gmail.com</div></div>
+        <div class="c-line"><div class="c-ico">📍</div><div class="c-txt" data-en="Metn, Lebanon · All Governorates" data-ar="المتن، لبنان · جميع المحافظات">Metn, Lebanon · All Governorates</div></div>
+        <div class="c-line"><div class="c-ico">🕐</div><div class="c-txt" data-en="Mon–Sat · 7:30 AM – 6:00 PM" data-ar="الاثنين–السبت · 7:30 – 18:00">Mon–Sat · 7:30 AM – 6:00 PM</div></div>
+      </div>
+    </div>
+    <div class="htag" data-en="#AJCContracting #Lebanon #BuildWithUs" data-ar="#AJCContracting #لبنان #ابنِ_معنا">#AJCContracting #Lebanon #BuildWithUs</div>
+  </div>
+
+</div>
+
+<p style="text-align:center;color:rgba(255,255,255,0.18);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;margin-top:2.5rem;padding-bottom:2rem;">
+  Toggle EN / AR above · Screenshot each post at 500×500px for Instagram
+</p>
+
+<script>
+function setLang(lang) {
+  const isAr = lang === 'ar';
+  document.body.classList.toggle('ar', isAr);
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+
+  // Update all data-en / data-ar elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerHTML = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+  });
+
+  // Move logo badge for RTL
+  document.querySelectorAll('.logo-badge').forEach(el => {
+    if (isAr) {
+      el.style.right = 'auto'; el.style.left = '20px';
+    } else {
+      el.style.left = 'auto'; el.style.right = '20px';
+    }
+  });
+
+  // Move hashtag for RTL
+  document.querySelectorAll('.htag').forEach(el => {
+    if (isAr) {
+      el.style.right = 'auto'; el.style.left = '20px';
+      el.style.textAlign = 'left';
+    } else {
+      el.style.left = 'auto'; el.style.right = '20px';
+    }
+  });
+
+  // Move accent bar
+  document.querySelectorAll('.accent-l').forEach(el => {
+    el.style.left = isAr ? 'auto' : '0';
+    el.style.right = isAr ? '0' : 'auto';
+  });
+
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes(lang.toUpperCase()));
+  });
+}
+</script>
+</body>
+</html>

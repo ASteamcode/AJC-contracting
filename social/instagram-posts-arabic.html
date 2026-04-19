@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AJC Contracting — منشورات إنستغرام عربية</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#1A3A8C;--navy-dark:#122970;--navy-light:#2450B5;--white:#fff;}
+  body{background:#0a0a0a;font-family:'Noto Sans Arabic',sans-serif;padding:2rem;direction:rtl;}
+
+  h1{font-family:'Noto Sans Arabic',sans-serif;font-size:1rem;font-weight:700;
+    color:rgba(255,255,255,0.3);text-align:center;margin-bottom:2.5rem;letter-spacing:0;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,500px);gap:2rem;justify-content:center;}
+
+  .post{width:500px;height:500px;position:relative;overflow:hidden;cursor:pointer;
+    transition:transform 0.3s;}
+  .post:hover{transform:scale(1.015);}
+
+  /* overlays */
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+  .ov-navy{position:absolute;inset:0;background:linear-gradient(225deg,rgba(18,41,112,0.93) 0%,rgba(18,41,112,0.55) 60%,transparent 100%);}
+  .ov-bottom{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,35,0.97) 0%,rgba(10,15,35,0.55) 50%,transparent 85%);}
+  .ov-dark{position:absolute;inset:0;background:rgba(10,15,35,0.75);}
+  .ov-right{position:absolute;inset:0;background:linear-gradient(to left,rgba(18,41,112,0.95) 0%,rgba(18,41,112,0.7) 50%,transparent 100%);}
+
+  /* accents */
+  .acc-r{position:absolute;right:0;top:0;bottom:0;width:5px;background:#fff;}
+  .acc-t{position:absolute;top:0;left:0;right:0;height:4px;background:#fff;}
+  .acc-b{position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--navy);}
+
+  /* logo */
+  .logo{position:absolute;top:20px;left:20px;background:var(--navy);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:900;
+    letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:2px;}
+
+  /* hashtag */
+  .ht{position:absolute;bottom:18px;left:20px;font-size:0.62rem;
+    color:rgba(255,255,255,0.28);direction:rtl;}
+
+  /* ── shared text helpers ── */
+  .eyebrow{font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.45);margin-bottom:10px;letter-spacing:0.01em;}
+  .big-title{font-size:3rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:12px;}
+  .accent{color:#7BAEF0;}
+  .body-text{font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.85;max-width:360px;}
+  .svc-badge{display:inline-block;background:var(--navy);color:#fff;font-size:0.62rem;
+    font-weight:700;padding:4px 10px;border-radius:1px;margin-bottom:10px;}
+  .white-badge{display:inline-block;background:#fff;color:var(--navy);font-size:0.62rem;
+    font-weight:700;padding:4px 10px;border-radius:1px;}
+
+  /* ════════════════════════════════════════
+     POST AR-1 — Interior Fit-Out
+  ════════════════════════════════════════ */
+  #ar1 .bg{background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80');}
+  #ar1 .content{position:absolute;bottom:0;left:0;right:0;padding:32px 38px 28px;}
+  #ar1 .big-title{font-size:2.8rem;}
+
+  /* ════════════════════════════════════════
+     POST AR-2 — Free Quote CTA
+  ════════════════════════════════════════ */
+  #ar2{background:var(--navy);}
+  #ar2 .deco-circle{position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+    border-radius:50%;border:60px solid rgba(255,255,255,0.04);}
+  #ar2 .deco-circle2{position:absolute;left:-60px;bottom:-60px;width:250px;height:250px;
+    border-radius:50%;border:40px solid rgba(255,255,255,0.03);}
+  #ar2 .content{position:absolute;inset:0;padding:44px 42px;display:flex;flex-direction:column;justify-content:center;}
+  #ar2 .sub-label{font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+  #ar2 .big-title{font-size:2.9rem;line-height:1.05;}
+  #ar2 .body-text{margin-bottom:24px;max-width:320px;}
+  #ar2 .cta-box{display:inline-flex;align-items:center;gap:10px;background:#fff;
+    color:var(--navy);font-size:0.85rem;font-weight:700;padding:13px 28px;
+    border-radius:2px;align-self:flex-start;}
+
+  /* ════════════════════════════════════════
+     POST AR-3 — Regions / Coverage
+  ════════════════════════════════════════ */
+  #ar3{background:var(--navy-dark);}
+  #ar3 .map-bg{position:absolute;inset:0;opacity:0.06;font-size:18rem;
+    display:flex;align-items:center;justify-content:center;color:#fff;}
+  #ar3 .content{position:absolute;inset:0;padding:36px 40px;display:flex;flex-direction:column;justify-content:center;}
+  #ar3 .big-title{font-size:2.4rem;margin-bottom:20px;}
+  #ar3 .regions{display:flex;flex-wrap:wrap;gap:8px;}
+  #ar3 .region-tag{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+    color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:500;
+    padding:7px 14px;border-radius:2px;}
+
+  /* ════════════════════════════════════════
+     POST AR-4 — Commercial Projects
+  ════════════════════════════════════════ */
+  #ar4 .bg{background-image:url('https://images.unsplash.com/photo-1520608516-eef22c3beaa1?w=800&q=80');}
+  #ar4 .content{position:absolute;inset:0;display:flex;flex-direction:row-reverse;}
+  #ar4 .panel{width:220px;flex-shrink:0;background:rgba(18,41,112,0.95);
+    padding:34px 26px;display:flex;flex-direction:column;justify-content:center;}
+  #ar4 .big-title{font-size:1.9rem;margin-bottom:12px;}
+  #ar4 .body-text{font-size:0.75rem;max-width:none;}
+  #ar4 .cta-link{margin-top:16px;font-size:0.68rem;font-weight:700;
+    color:rgba(255,255,255,0.5);border-bottom:1px solid rgba(255,255,255,0.25);
+    display:inline-block;padding-bottom:2px;}
+
+  /* ════════════════════════════════════════
+     POST AR-5 — Solar Savings
+  ════════════════════════════════════════ */
+  #ar5 .bg{background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80');}
+  #ar5 .content{position:absolute;inset:0;padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;}
+  #ar5 .top-badge{display:flex;justify-content:flex-start;}
+  #ar5 .numbers-row{display:flex;gap:16px;}
+  #ar5 .number-card{flex:1;background:rgba(18,41,112,0.85);padding:16px 14px;border-top:3px solid #fff;}
+  #ar5 .n-big{font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;
+    color:#fff;line-height:1;}
+  #ar5 .n-lbl{font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.55);margin-top:3px;}
+  #ar5 .bottom-text{}
+  #ar5 .big-title{font-size:2.2rem;margin-bottom:6px;}
+  #ar5 .body-text{font-size:0.78rem;}
+
+  /* ════════════════════════════════════════
+     POST AR-6 — About / Story
+  ════════════════════════════════════════ */
+  #ar6{background:var(--navy-dark);}
+  #ar6 .bg{background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80');opacity:0.15;}
+  #ar6 .content{position:absolute;inset:0;padding:40px 42px;display:flex;flex-direction:column;justify-content:center;}
+  #ar6 .quote-mark{font-size:6rem;color:rgba(255,255,255,0.05);line-height:0.6;
+    font-family:'Barlow Condensed',sans-serif;margin-bottom:8px;}
+  #ar6 .quote-text{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,0.82);
+    line-height:1.8;margin-bottom:20px;max-width:380px;}
+  #ar6 .author{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.02em;}
+  #ar6 .divider{width:40px;height:2px;background:rgba(255,255,255,0.2);margin:14px 0;}
+
+  /* ════════════════════════════════════════
+     POST AR-7 — Electrical + Solar Combo
+  ════════════════════════════════════════ */
+  #ar7{background:#050c1f;}
+  #ar7 .content{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  #ar7 .half{padding:32px 26px;display:flex;flex-direction:column;justify-content:flex-end;}
+  #ar7 .half-solar{background:linear-gradient(to bottom,rgba(26,58,140,0.8),rgba(18,41,112,0.95));
+    border-left:2px solid rgba(255,255,255,0.1);}
+  #ar7 .half-elec{background:rgba(5,12,31,0.95);}
+  #ar7 .h-icon{font-size:2.5rem;margin-bottom:12px;display:block;}
+  #ar7 .h-title{font-size:1.5rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:8px;}
+  #ar7 .h-desc{font-size:0.72rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.7;}
+  #ar7 .center-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:#fff;color:var(--navy);font-family:'Barlow Condensed',sans-serif;
+    font-size:0.7rem;font-weight:900;letter-spacing:0.12em;text-transform:uppercase;
+    padding:7px 14px;border-radius:2px;z-index:10;white-space:nowrap;}
+
+  /* ════════════════════════════════════════
+     POST AR-8 — Stats / Trust
+  ════════════════════════════════════════ */
+  #ar8{background:var(--navy);}
+  #ar8 .bg{background-image:url('https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&q=80');opacity:0.08;}
+  #ar8 .content{position:absolute;inset:0;padding:38px 40px;display:flex;flex-direction:column;justify-content:space-between;}
+  #ar8 .big-title{font-size:2.5rem;}
+  #ar8 .body-text{max-width:340px;}
+  #ar8 .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px;}
+  #ar8 .s-box{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+    padding:16px 18px;}
+  #ar8 .s-num{font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:900;
+    color:#fff;line-height:1;}
+  #ar8 .s-lbl{font-size:0.72rem;font-weight:500;color:rgba(255,255,255,0.45);margin-top:3px;}
+
+  /* ════════════════════════════════════════
+     POST AR-9 — Renovation Story
+  ════════════════════════════════════════ */
+  #ar9 .bg{background-image:url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80');}
+  #ar9 .content{position:absolute;inset:0;padding:34px 40px;display:flex;flex-direction:column;justify-content:space-between;}
+  #ar9 .top-row{display:flex;justify-content:space-between;align-items:flex-start;}
+  #ar9 .svc-chip{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-size:0.65rem;font-weight:700;padding:5px 12px;border-radius:1px;}
+  #ar9 .num-big{font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:900;
+    color:rgba(255,255,255,0.07);line-height:0.8;}
+  #ar9 .bottom{}
+  #ar9 .big-title{font-size:2.6rem;margin-bottom:8px;}
+  #ar9 .body-text{font-size:0.8rem;max-width:360px;}
+  #ar9 .email-line{margin-top:14px;font-size:0.72rem;color:rgba(255,255,255,0.4);direction:ltr;text-align:right;}
+
+  @media(max-width:1600px){
+    .grid{grid-template-columns:repeat(2,500px);}
+  }
+  @media(max-width:1100px){
+    .grid{grid-template-columns:500px;}
+  }
+</style>
+</head>
+<body>
+
+<h1>AJC Contracting — 9 منشورات إنستغرام إضافية بالعربية</h1>
+
+<div class="grid">
+
+  <!-- AR-1 — Interior Fit-Out -->
+  <div class="post" id="ar1">
+    <div class="bg"></div>
+    <div class="ov-right"></div>
+    <div class="acc-r"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="svc-badge">خدمة 03</div>
+      <div class="big-title">تشطيبات<br/>داخلية<br/><span class="accent">فاخرة</span></div>
+      <p class="body-text">نجارة مخصصة، تكسية حجرية، أنظمة كهروميكانيكية وتصميم داخلي راقٍ للمساحات السكنية والتجارية في لبنان.</p>
+    </div>
+    <div class="ht">#تشطيبات_داخلية #لبنان #AJCContracting</div>
+  </div>
+
+  <!-- AR-2 — Free Quote CTA -->
+  <div class="post" id="ar2">
+    <div class="deco-circle"></div>
+    <div class="deco-circle2"></div>
+    <div class="acc-r"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="sub-label">خدماتنا في لبنان</div>
+      <div class="big-title">عرض سعر<br/><span class="accent">مجاني</span><br/>لمشروعك</div>
+      <p class="body-text">مهما كان مشروعك — فيلا، مكتب، ترميم أو طاقة شمسية — فريق AJC جاهز لمرافقتك من الفكرة حتى التسليم.</p>
+      <div class="cta-box">تواصل معنا الآن ←</div>
+    </div>
+    <div class="ht">#عرض_سعر_مجاني #مقاولات_لبنان #AJC</div>
+  </div>
+
+  <!-- AR-3 — Coverage / Regions -->
+  <div class="post" id="ar3">
+    <div class="map-bg">🗺</div>
+    <div class="acc-t"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="eyebrow">نخدم جميع المحافظات اللبنانية</div>
+      <div class="big-title">أينما<br/>بنيت في<br/><span class="accent">لبنان</span></div>
+      <div class="regions">
+        <span class="region-tag">بيروت</span>
+        <span class="region-tag">المتن</span>
+        <span class="region-tag">جبل لبنان</span>
+        <span class="region-tag">الشمال</span>
+        <span class="region-tag">الجنوب</span>
+        <span class="region-tag">البقاع</span>
+        <span class="region-tag">عكار</span>
+        <span class="region-tag">النبطية</span>
+      </div>
+    </div>
+    <div class="ht">#لبنان #مقاولات #AJCContracting</div>
+  </div>
+
+  <!-- AR-4 — Commercial Projects -->
+  <div class="post" id="ar4">
+    <div class="bg"></div>
+    <div class="acc-b"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="panel">
+        <div class="eyebrow">تجاري</div>
+        <div class="big-title">مشاريع<br/>تجارية<br/>محترفة</div>
+        <p class="body-text">مكاتب، مراكز تجارية، مطاعم وفنادق مبنية للكفاءة والديمومة في لبنان.</p>
+        <span class="cta-link">Ajccontracting@gmail.com ←</span>
+      </div>
+    </div>
+    <div class="ht">#مشاريع_تجارية #بيروت #AJCContracting</div>
+  </div>
+
+  <!-- AR-5 — Solar Savings -->
+  <div class="post" id="ar5">
+    <div class="bg"></div>
+    <div class="ov-bottom"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="top-badge">
+        <div class="white-badge">طاقة شمسية · لبنان</div>
+      </div>
+      <div class="numbers-row">
+        <div class="number-card">
+          <div class="n-big">98%</div>
+          <div class="n-lbl">كفاءة الأنظمة</div>
+        </div>
+        <div class="number-card">
+          <div class="n-big">0</div>
+          <div class="n-lbl">فاتورة كهرباء</div>
+        </div>
+        <div class="number-card">
+          <div class="n-big">24/7</div>
+          <div class="n-lbl">كهرباء متواصلة</div>
+        </div>
+      </div>
+      <div class="bottom-text">
+        <div class="big-title">وداعاً<br/>لانقطاع<br/><span class="accent">الكهرباء</span></div>
+        <p class="body-text">AJC تصمم وتركب أنظمة شمسية متكاملة مع بطاريات تخزين لمنزلك أو شركتك.</p>
+      </div>
+    </div>
+    <div class="ht">#طاقة_شمسية #كهرباء_لبنان #SolarLebanon</div>
+  </div>
+
+  <!-- AR-6 — Brand Story / Quote -->
+  <div class="post" id="ar6">
+    <div class="bg"></div>
+    <div class="acc-r"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">في AJC للمقاولات، نؤمن بأن لبنان يستحق بناءً على مستوى عالمي. لذلك نعمل بأعلى معايير التنفيذ والشفافية والخبرة في كل مشروع.</p>
+      <div class="divider"></div>
+      <div class="author">— فريق AJC للمقاولات، المتن · لبنان</div>
+    </div>
+    <div class="ht">#AJCContracting #مقاولات_لبنان #جودة_البناء</div>
+  </div>
+
+  <!-- AR-7 — Solar + Electrical Combo -->
+  <div class="post" id="ar7">
+    <div class="acc-t"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="half half-solar">
+        <span class="h-icon">☀️</span>
+        <div class="h-title">طاقة<br/>شمسية</div>
+        <p class="h-desc">تركيب ألواح شمسية وبطاريات لمنزلك أو شركتك</p>
+      </div>
+      <div class="half half-elec">
+        <span class="h-icon">⚡</span>
+        <div class="h-title">أعمال<br/>كهربائية</div>
+        <p class="h-desc">تمديدات، لوحات توزيع وتوصيلات مولدات</p>
+      </div>
+    </div>
+    <div class="center-badge">خدمتان بفريق واحد</div>
+    <div class="ht">#طاقة_شمسية #كهرباء #AJCContracting #لبنان</div>
+  </div>
+
+  <!-- AR-8 — Stats / Trust Post -->
+  <div class="post" id="ar8">
+    <div class="bg"></div>
+    <div class="acc-r"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div>
+        <div class="eyebrow">أرقام تتحدث عن نفسها</div>
+        <div class="big-title">ثقتكم<br/><span class="accent">هي قوتنا</span></div>
+        <p class="body-text">منذ أكثر من 15 عاماً نبني في لبنان بكل أمانة وخبرة.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="s-box">
+          <div class="s-num">+15</div>
+          <div class="s-lbl">سنة خبرة في لبنان</div>
+        </div>
+        <div class="s-box">
+          <div class="s-num">+200</div>
+          <div class="s-lbl">مشروع منجز</div>
+        </div>
+        <div class="s-box">
+          <div class="s-num">6</div>
+          <div class="s-lbl">محافظات نخدمها</div>
+        </div>
+        <div class="s-box">
+          <div class="s-num">98%</div>
+          <div class="s-lbl">رضا العملاء</div>
+        </div>
+      </div>
+    </div>
+    <div class="ht">#AJCContracting #مقاولات_لبنان #ثقة</div>
+  </div>
+
+  <!-- AR-9 — Renovation Heritage -->
+  <div class="post" id="ar9">
+    <div class="bg"></div>
+    <div class="ov-dark"></div>
+    <div class="acc-r"></div>
+    <div class="logo">AJC</div>
+    <div class="content">
+      <div class="top-row">
+        <span class="svc-chip">تجديد وترميم</span>
+        <span class="num-big">06</span>
+      </div>
+      <div class="bottom">
+        <div class="big-title">نُحيي<br/>التراث<br/><span class="accent">اللبناني</span></div>
+        <p class="body-text">نرمّم المباني التراثية والشقق القديمة والمنازل الحجرية بنفس الروح التي بُنيت بها — محافظين على هويتها، مضيفين إليها الحياة.</p>
+        <div class="email-line">Ajccontracting@gmail.com</div>
+      </div>
+    </div>
+    <div class="ht">#ترميم #تراث_لبنان #AJCContracting #بيوت_لبنانية</div>
+  </div>
+
+</div>
+
+<p style="text-align:center;color:rgba(255,255,255,0.15);font-size:0.65rem;letter-spacing:0.1em;margin-top:2.5rem;padding-bottom:2rem;">
+  خذ لقطة شاشة لكل منشور بحجم 500×500 بكسل للنشر على إنستغرام
+</p>
+
+</body>
+</html>
